@@ -1,0 +1,57 @@
+server:
+    port: 9000
+
+spring:
+    application:
+        name: CLOUD_GATEWAY
+
+    cloud:
+        gateway:
+            routes:
+                - id: Student-service
+                  uri: lb://STUDENT-SERVICE
+                  predicates:
+                      - Path=/Student,/Student/**,/auth/**
+
+                - id: School-service
+                  uri: lb://SCHOOL-SERVICE
+                  predicates:
+                      - Path=/School,/School/**
+
+            globalcors:
+                cors-configurations:
+                    '[/**]':
+                        allowedOrigins: "http://localhost:5173"
+                        allowedMethods:
+                            - GET
+                            - POST
+                            - PUT
+                            - DELETE
+                            - OPTIONS
+                        allowedHeaders: "*"
+                        allowCredentials: true
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+
+    instance:
+        hostname: localhost
+        prefer-ip-address: false
+
+logging:
+    level:
+        org.springframework.cloud.gateway: DEBUG
+        reactor.netty.http.client: DEBUG
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        gateway:
+            enabled: true
