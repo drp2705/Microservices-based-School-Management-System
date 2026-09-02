@@ -81,7 +81,7 @@ Once running, the Eureka dashboard (default `localhost:8761`) will show all regi
 
 ## Project Status
 
-This was an early architecture-focused project used to learn microservices fundamentals (service discovery, gateway routing, and inter-service auth) before building [EventSphere](#), a more complete full-stack, production-deployed booking platform.
+This was an early architecture-focused project used to learn microservices fundamentals (service discovery, gateway routing, and inter-service auth) before building (github.com/Dar-shit/eventsphere-backend), a more complete full-stack, production-deployed booking platform.
 
 ## Author
 
